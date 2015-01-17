@@ -43,10 +43,10 @@ public class Command implements Serializable
    private Date dateJour;
 
    @ManyToMany
-   private Set<Produit> produit = new HashSet<Produit>();
+   private produit = new HashSet<Produit>();
 
    @OneToMany
-   private Set<Client> client = new HashSet<Client>();
+   private Client client = new Client();
 
    public Long getId()
    {
