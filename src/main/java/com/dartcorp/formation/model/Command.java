@@ -1,22 +1,32 @@
 package com.dartcorp.formation.model;
 
 import javax.persistence.Entity;
+
 import java.io.Serializable;
+
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
+
 import java.lang.Override;
 import java.util.Date;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import com.dartcorp.formation.model.Produit;
+
 import java.util.Set;
 import java.util.HashSet;
+
 import javax.persistence.ManyToMany;
+
 import com.dartcorp.formation.model.Client;
+
 import javax.persistence.OneToMany;
 
 @Entity
@@ -42,10 +52,10 @@ public class Command implements Serializable
    @Temporal(TemporalType.DATE)
    private Date dateJour;
 
-   @ManyToMany
+   @ManyToMany(fetch=FetchType.EAGER)
    private Set<Produit> produit = new HashSet<Produit>();
 
-   @OneToMany
+   @OneToMany(fetch=FetchType.EAGER)
    private Set<Client> client = new HashSet<Client>();
 
    public Long getId()
