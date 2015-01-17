@@ -1,5 +1,6 @@
 package com.dartcorp.formation.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -20,6 +21,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
 import com.dartcorp.formation.model.Command;
 
 /**
@@ -120,5 +122,28 @@ public class CommandEndpoint
       }
 
       return Response.noContent().build();
+   }
+
+   @GET
+   @Path("/findByClientId/{clientId}")
+   @Produces("application/json")
+   public Response findByClientId(@PathParam("clientId") Long clientId)
+   {
+      TypedQuery<Command> findByClientIdQuery = em.createQuery("SELECT DISTINCT c FROM Command c WHERE c.client.id = :clientId ORDER BY c.id", Command.class);
+      findByClientIdQuery.setParameter("clientId", clientId);
+      List<Command> commands = new ArrayList<Command>();
+      try
+      {
+    	  commands = findByClientIdQuery.getResultList();
+      }
+      catch (NoResultException nre)
+      {
+    	  commands = null;
+      }
+      if (commands == null)
+      {
+         return Response.status(Status.NOT_FOUND).build();
+      }
+      return Response.ok(commands).build();
    }
 }

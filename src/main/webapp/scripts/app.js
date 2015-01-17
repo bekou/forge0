@@ -13,6 +13,7 @@ angular.module('pharma',['ngRoute','ngResource'])
       .when('/Produits',{templateUrl:'views/Produit/search.html',controller:'SearchProduitController'})
       .when('/Produits/new',{templateUrl:'views/Produit/detail.html',controller:'NewProduitController'})
       .when('/Produits/edit/:ProduitId',{templateUrl:'views/Produit/detail.html',controller:'EditProduitController'})
+      .when('/Commands/client/:ClientId',{templateUrl:'views/Command/clientcommands.html',controller:'ClientCommandController'})
       .otherwise({
         redirectTo: '/'
       });
