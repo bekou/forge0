@@ -12,6 +12,12 @@ import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import com.dartcorp.formation.model.Produit;
+import java.util.Set;
+import java.util.HashSet;
+import javax.persistence.ManyToMany;
+import com.dartcorp.formation.model.Client;
+import javax.persistence.OneToMany;
 
 @Entity
 @XmlRootElement
@@ -35,6 +41,12 @@ public class Command implements Serializable
    @Column
    @Temporal(TemporalType.DATE)
    private Date dateJour;
+
+   @ManyToMany
+   private Set<Produit> produit = new HashSet<Produit>();
+
+   @OneToMany
+   private Set<Client> client = new HashSet<Client>();
 
    public Long getId()
    {
@@ -124,5 +136,25 @@ public class Command implements Serializable
       result += "prixTotal: " + prixTotal;
       result += ", qte: " + qte;
       return result;
+   }
+
+   public Set<Produit> getProduit()
+   {
+      return this.produit;
+   }
+
+   public void setProduit(final Set<Produit> produit)
+   {
+      this.produit = produit;
+   }
+
+   public Set<Client> getClient()
+   {
+      return this.client;
+   }
+
+   public void setClient(final Set<Client> client)
+   {
+      this.client = client;
    }
 }

@@ -1,6 +1,6 @@
 
 
-angular.module('pharma').controller('SearchCommandController', function($scope, $http, CommandResource ) {
+angular.module('pharma').controller('SearchCommandController', function($scope, $http, CommandResource , ProduitResource, ClientResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
