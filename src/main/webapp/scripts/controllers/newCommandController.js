@@ -32,13 +32,9 @@ angular.module('pharma').controller('NewCommandController', function ($scope, $l
         });
     });
     $scope.$watch("clientSelection", function(selection) {
-        if (typeof selection != 'undefined') {
-            $scope.command.client = [];
-            $.each(selection, function(idx,selectedItem) {
-                var collectionItem = {};
-                collectionItem.id = selectedItem.value;
-                $scope.command.client.push(collectionItem);
-            });
+        if ( typeof selection != 'undefined') {
+            $scope.command.client = {};
+            $scope.command.client.id = selection.value;
         }
     });
     

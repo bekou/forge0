@@ -28,6 +28,7 @@ import javax.persistence.ManyToMany;
 import com.dartcorp.formation.model.Client;
 
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 @XmlRootElement
@@ -52,11 +53,11 @@ public class Command implements Serializable
    @Temporal(TemporalType.DATE)
    private Date dateJour;
 
-   @ManyToMany(fetch=FetchType.EAGER)
+   @ManyToMany(fetch = FetchType.EAGER)
    private Set<Produit> produit = new HashSet<Produit>();
 
-   @OneToMany(fetch=FetchType.EAGER)
-   private Set<Client> client = new HashSet<Client>();
+   @OneToOne
+   private Client client;
 
    public Long getId()
    {
@@ -139,15 +140,6 @@ public class Command implements Serializable
       this.dateJour = dateJour;
    }
 
-   @Override
-   public String toString()
-   {
-      String result = getClass().getSimpleName() + " ";
-      result += "prixTotal: " + prixTotal;
-      result += ", qte: " + qte;
-      return result;
-   }
-
    public Set<Produit> getProduit()
    {
       return this.produit;
@@ -158,13 +150,22 @@ public class Command implements Serializable
       this.produit = produit;
    }
 
-   public Set<Client> getClient()
+   public Client getClient()
    {
-      return this.client;
+      return client;
    }
 
-   public void setClient(final Set<Client> client)
+   public void setClient(Client client)
    {
       this.client = client;
+   }
+
+   @Override
+   public String toString()
+   {
+      String result = getClass().getSimpleName() + " ";
+      result += "prixTotal: " + prixTotal;
+      result += ", qte: " + qte;
+      return result;
    }
 }

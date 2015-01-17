@@ -17,6 +17,7 @@ angular.module('pharma').controller('SearchCommandController', function($scope, 
         }
         return max;
     };
+    $scope.clientList = ClientResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = CommandResource.queryAll(function(){

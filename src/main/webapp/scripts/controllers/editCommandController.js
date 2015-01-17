@@ -39,13 +39,9 @@ angular.module('pharma').controller('EditCommandController', function($scope, $r
                         value : item.id,
                         text : item.id
                     };
-                    if($scope.command.client){
-                        $.each($scope.command.client, function(idx, element) {
-                            if(item.id == element.id) {
-                                $scope.clientSelection.push(labelObject);
-                                $scope.command.client.push(wrappedObject);
-                            }
-                        });
+                    if($scope.command.client && item.id == $scope.command.client.id) {
+                        $scope.clientSelection = labelObject;
+                        $scope.command.client = wrappedObject;
                         self.original.client = $scope.command.client;
                     }
                     return labelObject;
@@ -99,15 +95,10 @@ angular.module('pharma').controller('EditCommandController', function($scope, $r
             });
         }
     });
-    $scope.clientSelection = $scope.clientSelection || [];
     $scope.$watch("clientSelection", function(selection) {
-        if (typeof selection != 'undefined' && $scope.command) {
-            $scope.command.client = [];
-            $.each(selection, function(idx,selectedItem) {
-                var collectionItem = {};
-                collectionItem.id = selectedItem.value;
-                $scope.command.client.push(collectionItem);
-            });
+        if (typeof selection != 'undefined') {
+            $scope.command.client = {};
+            $scope.command.client.id = selection.value;
         }
     });
     

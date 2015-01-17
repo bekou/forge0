@@ -28,6 +28,14 @@
 
 
 
+    <div class="form-group">
+        <label for="client" class="col-sm-2 control-label">Client</label>
+        <div class="col-sm-10">
+            <select id="client" name="client" class="form-control" ng-model="search.client" ng-options="c as c.id for c in clientList">
+                <option value="">Choose a Client</option>
+            </select>
+        </div>
+    </div>
 
 
         <div class="form-group">
@@ -45,6 +53,7 @@
                     <th>Prix Total</th>
                     <th>Qte</th>
                     <th>Date Jour</th>
+                    <th>Client</th>
                 </tr>
             </thead>
             <tbody id="search-results-body">
@@ -52,6 +61,7 @@
                     <td><a href="#/Commands/edit/{{result.id}}">{{result.prixTotal}}</a></td>
                     <td><a href="#/Commands/edit/{{result.id}}">{{result.qte}}</a></td>
                     <td><a href="#/Commands/edit/{{result.id}}">{{result.dateJour| date:'mediumDate'}}</a></td>
+                        <td><a href="#/Commands/edit/{{result.id}}">{{result.client.id}}</a></td>
                 </tr>
             </tbody>
         </table>

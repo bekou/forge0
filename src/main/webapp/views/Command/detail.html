@@ -44,9 +44,9 @@
     <div class="form-group" ng-class="{'has-error': CommandForm.client.$invalid}">
         <label for="client" class="col-sm-2 control-label">Client</label>
         <div id="clientControls" class="col-sm-10">
-            <select id="client" name="client" multiple class="form-control" ng-model="clientSelection" ng-options="c.text for c in clientSelectionList">
-                <option value="">Choose a Client</option>
-            </select>
+        <select id="client" name="client" class="form-control" ng-model="clientSelection" ng-options="c.text for c in clientSelectionList"  >
+            <option value="">Choose a Client</option>
+        </select>
         </div>
     </div>
 
