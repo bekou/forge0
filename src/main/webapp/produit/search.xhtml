@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{produitBean.page}'/>
+		<f:event type="preRenderView" listener='#{produitBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Produit entities"/>
+
+	<ui:define name="header">
+		Produit
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Produit entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="produitBeanExampleName" value="Name:"/>
+						<h:panelGroup>
+							<h:inputText id="produitBeanExampleName" value="#{produitBean.example.name}"/>
+							<h:message for="produitBeanExampleName" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="produitBeanExamplePrix" value="Prix:"/>
+						<h:panelGroup>
+							<h:inputText id="produitBeanExamplePrix" value="#{produitBean.example.prix}"/>
+							<h:message for="produitBeanExamplePrix" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="produitBeanExampleQte" value="Qte:"/>
+						<h:panelGroup>
+							<h:inputText id="produitBeanExampleQte" value="#{produitBean.example.qte}"/>
+							<h:message for="produitBeanExampleQte" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="produitBeanExampleReference" value="Reference:"/>
+						<h:panelGroup>
+							<h:inputText id="produitBeanExampleReference" value="#{produitBean.example.reference}"/>
+							<h:message for="produitBeanExampleReference" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{produitBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{produitBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="produitBeanPageItems" styleClass="data-table" value="#{produitBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name"/>
+					</f:facet>
+					<h:link outcome="/produit/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemName" value="#{_item.name}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Prix"/>
+					</f:facet>
+					<h:link outcome="/produit/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemPrix" value="#{_item.prix}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Qte"/>
+					</f:facet>
+					<h:link outcome="/produit/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemQte" value="#{_item.qte}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Reference"/>
+					</f:facet>
+					<h:link outcome="/produit/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemReference" value="#{_item.reference}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{produitBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

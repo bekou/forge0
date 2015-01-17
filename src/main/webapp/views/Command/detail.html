@@ -1,0 +1,43 @@
+<header ng-switch on="$location.path().indexOf('/Commands/new') > -1">
+    <h3 ng-switch-when="true">Create a new Command</h3>
+    <h3 ng-switch-when="false">View or edit Command</h3>
+</header>
+<form id="CommandForm" name="CommandForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': CommandForm.prixTotal.$invalid}">
+        <label for="prixTotal" class="col-sm-2 control-label">Prix Total</label>
+        <div id="prixTotalControls" class="col-sm-10">
+            <input id="prixTotal" name="prixTotal" type="number" class="form-control" ng-model="command.prixTotal" placeholder="Enter the Command Prix Total"></input>
+            <span class="help-block error" ng-show="CommandForm.prixTotal.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': CommandForm.qte.$invalid}">
+        <label for="qte" class="col-sm-2 control-label">Qte</label>
+        <div id="qteControls" class="col-sm-10">
+            <input id="qte" name="qte" type="number" class="form-control" ng-model="command.qte" placeholder="Enter the Command Qte"></input>
+            <span class="help-block error" ng-show="CommandForm.qte.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': CommandForm.dateJour.$invalid}">
+        <label for="dateJour" class="col-sm-2 control-label">Date Jour</label>
+        <div id="dateJourControls" class="col-sm-10">
+            <date id="dateJour" name="dateJour" ng-model="command.dateJour" placeholder="Enter the Command Date Jour"></date>
+            <span class="help-block error" ng-show="CommandForm.dateJour.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveCommand" name="saveCommand" class="btn btn-primary" ng-disabled="isClean() || CommandForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteCommand" name="deleteCommand" class="btn btn-danger" ng-show="command.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{commandBean.page}'/>
+		<f:event type="preRenderView" listener='#{commandBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Command entities"/>
+
+	<ui:define name="header">
+		Command
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Command entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="commandBeanExamplePrixTotal" value="Prix Total:"/>
+						<h:panelGroup>
+							<h:inputText id="commandBeanExamplePrixTotal" value="#{commandBean.example.prixTotal}"/>
+							<h:message for="commandBeanExamplePrixTotal" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="commandBeanExampleQte" value="Qte:"/>
+						<h:panelGroup>
+							<h:inputText id="commandBeanExampleQte" value="#{commandBean.example.qte}"/>
+							<h:message for="commandBeanExampleQte" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{commandBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{commandBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="commandBeanPageItems" styleClass="data-table" value="#{commandBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Prix Total"/>
+					</f:facet>
+					<h:link outcome="/command/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemPrixTotal" value="#{_item.prixTotal}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Qte"/>
+					</f:facet>
+					<h:link outcome="/command/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemQte" value="#{_item.qte}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Date Jour"/>
+					</f:facet>
+					<h:link outcome="/command/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemDateJour" value="#{_item.dateJour}">
+							<f:convertDateTime type="date"/>
+						</h:outputText>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{commandBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
