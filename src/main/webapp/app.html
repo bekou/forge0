@@ -37,6 +37,7 @@
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Clients')}" href="#/Clients" data-toggle="offcanvas">Clients</a>
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Commands')}" href="#/Commands" data-toggle="offcanvas">Commands</a>
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Produits')}" href="#/Produits" data-toggle="offcanvas">Produits</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Pharmacies')}" href="#/Pharmacies" data-toggle="offcanvas">Pharmacie</a>
                         </div>
                     </nav>
                 </div>
@@ -80,9 +81,13 @@
     <script src="scripts/controllers/searchCommandController.js"></script>
     <script src="scripts/controllers/editCommandController.js"></script>
     <script src="scripts/services/ProduitFactory.js"></script>
+     <script src="scripts/services/PharmacieFactory.js"></script>
     <script src="scripts/controllers/newProduitController.js"></script>
     <script src="scripts/controllers/searchProduitController.js"></script>
     <script src="scripts/controllers/editProduitController.js"></script>
     <script src="scripts/controllers/clientCommandController.js"></script>
+    <script src="scripts/controllers/crudPharmacieController.js"></script>
+    <script src="scripts/controllers/createPharmacieController.js"></script>
+    <script src="scripts/controllers/readPharmacieController.js"></script>
 </body>
 </html>

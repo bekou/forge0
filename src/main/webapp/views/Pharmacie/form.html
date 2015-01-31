@@ -1,0 +1,35 @@
+
+<form ng-submit="doCreate()">
+	<div class="list">
+	   <h2>Création d'une pharmacie OPtimal </h2>
+	  <table class="table table-hover">
+		<tr><label> 
+			<td><span class="input-label">Name</span> </td>
+			<td><input type="text" ng-model="form.name"></td>
+		</label> </tr>
+		
+		<tr><label> 
+			<td><span class="input-label">Numero Commerce</span></td>
+			 <td><input type="text" ng-model="form.numeroCommerce"></td>
+		</label> </tr>
+		<tr><label> 
+			<td><span class="input-label">Employer Size</span></td> 
+			<td><input type="text" ng-model="form.employeSize"></td>
+		</label> </tr>
+
+		<tr><label> 
+			<td><span class="input-label">Locality</span></td>
+			<td><input type="text" ng-model="form.locality"></td>
+		</label> </tr>
+		
+		
+		<tr><label> 
+			<td><span class="input-label">Actif</span></td>
+			<td><input type="checkbox" ng-model="form.actif"></td>
+		</label></tr>
+		
+	</table>
+		<button class="btn btn-default" type="submit" ng-click="cancel()">Cancel</button>
+		<button class="btn btn-primary" type="submit" ng-click="toCreate()">Save</button>
+	</div>
+</form>

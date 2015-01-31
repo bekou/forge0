@@ -1,0 +1,41 @@
+<div>
+    <h3>Search for Clients</h3>
+    <form id="ClientSearch" class="form-horizontal">
+        
+
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input id="name" name="name" class="form-control" type="text" ng-model="search.name" placeholder="Enter the Client Name"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="adress" class="col-sm-2 control-label">Adress</label>
+        <div class="col-sm-10">
+            <input id="adress" name="adress" class="form-control" type="text" ng-model="search.adress" placeholder="Enter the Client Adress"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">Phone</label>
+        <div class="col-sm-10">
+            <input id="phone" name="phone" class="form-control" type="text" ng-model="search.phone" placeholder="Enter the Client Phone"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input id="email" name="email" class="form-control" type="text" ng-model="search.email" placeholder="Enter the Client Email"></input>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
