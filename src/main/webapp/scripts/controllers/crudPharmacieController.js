@@ -1,5 +1,5 @@
 
-angular.module('pharma').controller('crudPharmacieController', function ($scope, $location, locationParser, ProduitResource ) {
+angular.module('pharma').controller('crudPharmacieController', function ($scope, $location, locationParser, PharmacieResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     
@@ -14,10 +14,4 @@ angular.module('pharma').controller('crudPharmacieController', function ($scope,
     $scope.cancel = function() {
         $location.path("/Pharmacies");
     };
-    $scope.cancel = function() {
-        $location.path("/Pharmacies");
-    };    
-    $scope.cancel = function() {
-        $location.path("/Pharmacies");
-    };
-});
+ });

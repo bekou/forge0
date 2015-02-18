@@ -18,20 +18,35 @@ public class Pharmacie implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
-	@Column
+	
+	@Column(nullable = false)
 	private String identif;
-	@Column
+	
+	@Column(nullable = false)
 	private String name;
-	@Column
+	
+	@Column(nullable = false)
 	private String numeroCommerce;
-	@Column
-	private Date dateCreation;
-	@Column
-	private String locality;
-	@Column
+	
+	@Column (nullable = false)
+	private String dateCreation;
+
+	@Column(nullable = false)
 	private int employeSize;
+
+	@Column(nullable = false)
+	private String locality;
+	
+	public String getLocality() {
+		return locality;
+	}
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}
+
 	@Column
-	private boolean isActif;
+	private Boolean isActif;
 
 	public Long getId() {
 		return id;
@@ -65,21 +80,14 @@ public class Pharmacie implements Serializable{
 		this.numeroCommerce = numeroCommerce;
 	}
 
-	public Date getDateCreation() {
+	public String getDateCreation() {
 		return dateCreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
-	public String getLocality() {
-		return locality;
-	}
-
-	public void setLocality(String locality) {
-		this.locality = locality;
-	}
 
 	public int getEmployeSize() {
 		return employeSize;
@@ -89,11 +97,12 @@ public class Pharmacie implements Serializable{
 		this.employeSize = employeSize;
 	}
 
-	public boolean isActif() {
+	
+	public Boolean getIsActif() {
 		return isActif;
 	}
 
-	public void setActif(boolean isActif) {
+	public void setIsActif(Boolean isActif) {
 		this.isActif = isActif;
 	}
 	

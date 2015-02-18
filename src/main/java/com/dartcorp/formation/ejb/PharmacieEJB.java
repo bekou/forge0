@@ -1,12 +1,13 @@
 package com.dartcorp.formation.ejb;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.PathParam;
 
 import com.dartcorp.formation.model.Pharmacie;
 
@@ -17,7 +18,13 @@ public class PharmacieEJB {
 	private EntityManager em;
 
 	public Pharmacie create(Pharmacie p) {
+		p.setDateCreation(dateCreation);
+		p.setIdentif(p.getName().substring(0, 3)+"000");
+		if(p.getIsActif()==null){
+			p.setIsActif(true);
+		}
 		em.persist(p);
+	
 		return p;
 	}
 
@@ -57,4 +64,6 @@ public class PharmacieEJB {
 		return results;
 	}
 
+	SimpleDateFormat t = new SimpleDateFormat("dd-MM-yyyy");
+	String dateCreation = t.format(new Date());
 }

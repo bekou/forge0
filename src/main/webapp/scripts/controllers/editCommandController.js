@@ -1,5 +1,3 @@
-
-
 angular.module('pharma').controller('EditCommandController', function($scope, $routeParams, $location, CommandResource , ProduitResource, ClientResource) {
     var self = this;
     $scope.disabled = false;

@@ -15,12 +15,14 @@ public class Locality {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	
-	@Column
+	@Column(nullable = false)
 	private String identif;
-	@Column
+	
+	@Column(nullable = false)
 	private String value;
+	
 	@OneToOne
-	private Pharma pharma;
+	private Pharmacie pharmacie;
 	
 	
 	public Long getId() {
@@ -41,13 +43,14 @@ public class Locality {
 	public void setValue(String value) {
 		this.value = value;
 	}
+	public Pharmacie getPharmacie() {
+		return pharmacie;
+	}
+	public void setPharmacie(Pharmacie pharmacie) {
+		this.pharmacie = pharmacie;
+	}
 	
-	public Pharma getPharma() {
-		return pharma;
-	}
-	public void setPharma(Pharma pharma) {
-		this.pharma = pharma;
-	}
+
 
 
 	

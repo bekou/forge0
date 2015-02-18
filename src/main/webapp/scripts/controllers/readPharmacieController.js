@@ -30,6 +30,13 @@ angular.module('pharma').controller('readPharmacieController', function($scope, 
        }
     };
     
+    $scope.doUpdate=function($scope,$http){
+
+     
+    };
+
+   
+    
     $scope.next = function() {
        if($scope.currentPage < ($scope.numberOfPages() - 1) ) {
            $scope.currentPage++;

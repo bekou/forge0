@@ -22,6 +22,7 @@
 					<th>Locolite</th>
 					<th>Numero de Commerce</th>
 					<th>Etat</th>
+          <th>status</th>
 				</tr>
 			</thead>
 			<tbody id="search-results-body">
@@ -33,6 +34,11 @@
 					<td>{{result.locality}}</td>
 					<td>{{result.numeroCommerce}}</td>
 					<td>{{result.isActif}}</td>
+            <td >
+                <button class="button button-small" ng-click="doUpdate()>
+                    change
+                </button>
+            </td>
 				</tr>
 			</tbody>
 		</table>

@@ -46,6 +46,25 @@ public class PharmacieEndPoint {
 		return Response.status(Status.OK).entity(p).build();
 	}
 
+	@PUT
+	@Path("/etat/{id:[0-9][0-9]*}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response updat(@PathParam("id") Long id, Pharmacie p) {
+		
+		if(p.getIsActif()==false){
+			p.setIsActif(true);
+		}else{
+			p.setIsActif(false);
+		}
+		p = pharmacieEJB.update(p);
+		if( p == null ) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		//return Response.ok(p).build();
+		return Response.status(Status.OK).entity(p).build();
+	}
+	
 	@DELETE
 	@Path("/{id:[0-9][0-9]*}")
 	public Response deleteById(@PathParam("id") Long id) {

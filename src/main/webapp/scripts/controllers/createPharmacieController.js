@@ -1,4 +1,3 @@
-
 angular.module('pharma').controller('createPharmacieController', function ($scope, $location, locationParser, PharmacieResource ) {
     $scope.$location = $location;
     $scope.pharmacie = $scope.pharmacie || {};
@@ -13,7 +12,7 @@ angular.module('pharma').controller('createPharmacieController', function ($scop
             $scope.displayError = true;
         };
         PharmacieResource.save($scope.pharmacie, successCallback, errorCallback);
-        $scope.pharmacie={};
+
     };
     
     $scope.cancel = function() {
